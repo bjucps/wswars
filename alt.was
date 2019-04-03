@@ -1,0 +1,18 @@
+source 127.0.2.1
+target localhost 5000
+
+connect c1
+connect c2
+connect c3
+list
+pause 1
+
+get c2 /../wswars/temp.html
+list
+pause .5
+get c1 /test.txt
+list
+close c3
+
+list
+bye

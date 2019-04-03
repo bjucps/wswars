@@ -1,0 +1,18 @@
+source 127.0.1.1
+target localhost 5000
+
+connect c1
+connect c2
+connect c3
+list
+pause 1
+
+close c1
+list
+get c2 /baz.txt
+list
+pause .5
+get c3 /test.txt
+
+list
+bye

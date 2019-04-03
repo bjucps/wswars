@@ -1,0 +1,5 @@
+source 127.0.99.1
+target localhost 5000
+connect
+get /fail/hang
+bye
