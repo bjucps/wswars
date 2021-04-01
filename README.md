@@ -11,7 +11,7 @@ The following components are involved:
 
 See student usage instructions online:
 
-https://protect.bju.edu/cps/courses/cps320/labs/WebServerWars.html
+https://protect.bju.edu/cps/courses/cps250/labs/WebServerWars.html
 
 The warproxy sends logging messages to csunix via UDP to be
 received by grammalog.py.
@@ -21,7 +21,7 @@ Students register using setup.sh, which invokes register utility on csunix
 
 ## On csunix
 
-Edit /home/cps320/wswars/users.txt and delete entries.
+Edit /home/cps250/wswars/users.txt and delete entries.
 
 Then, execute 
 

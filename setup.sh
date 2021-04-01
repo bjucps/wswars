@@ -18,7 +18,7 @@ fi
     
 
 echo "Registering via CSUNIX..."
-ssh $UNAME@csunix.bju.edu /home/cps320/wswars/register "$HANDLE" >stdout.txt 2>stderr.txt
+ssh $UNAME@csunix.bju.edu /home/cps250/wswars/register "$HANDLE" >stdout.txt 2>stderr.txt
 read IPADDR <stdout.txt
 read ERROR <stderr.txt
 rm stdout.txt stderr.txt

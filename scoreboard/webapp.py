@@ -8,7 +8,7 @@ import requests
 import time
 import subprocess
 
-REGISTER_FILENAME = '/home/cps320/wswars/users.txt'
+REGISTER_FILENAME = '/home/cps250/wswars/users.txt'
 RESPONSE_TEXT = 'Hello, world!'
 LOGFILE = '../war.log'
 

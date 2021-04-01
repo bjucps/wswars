@@ -8,7 +8,7 @@
 #include <sys/file.h>
 #include <pwd.h>
 
-const char USERS_DB[] = "/home/cps320/wswars/users.txt";
+const char USERS_DB[] = "/home/cps250/wswars/users.txt";
 
 char *getuname(uid_t userid) {
     struct passwd *pp = NULL;
