@@ -20,9 +20,9 @@ def makeStats(ip):
     return {'ip': ip, 'status': 'Offline', 'attacks': 0, 'kills': [], 'survives': 0, 'killedby': []}
 
 class ProbeThread(Thread):
-    def __init__(self, register_file):
+    def __init__(self, register_file, warlog):
         super().__init__()
-        self.f = subprocess.Popen(['tail','-F','-n', '+1',LOGFILE], stdout=subprocess.PIPE,stderr=subprocess.PIPE)
+        self.f = subprocess.Popen(['tail','-F','-n', '+1',warlog], stdout=subprocess.PIPE,stderr=subprocess.PIPE)
         self.register_file = register_file
 
     def readRegisteredUsers(self):
@@ -76,6 +76,7 @@ class ProbeThread(Thread):
         while True:
             now = time.time()
             line = self.f.stdout.readline().decode('utf-8').strip()
+            print("Got: " + line)
             if lastCheck + 5 < now:
                 self.readRegisteredUsers()
                 lastCheck = now
@@ -127,7 +128,7 @@ def home():
         survives = stats['survives']
         killedBy = ','.join(stats['killedby'])
         hlist += f"""<tr><td>{warrior}
-        <td><a href="http://{ip}:8080/index.html" target="_blank">{ip}</a>
+        <td><a href="http://{ip}:8080/" target="_blank">{ip}</a>
         <td>{status}
         <td>{attacks}
         <td>{kills}
@@ -171,6 +172,7 @@ td, th {{
     border: 1px solid white;
     padding: 3px;
     font-size: 14pt;
+    text-align: center;
 }}
 a {{ color: white }}
 .Offline {{ color: red }}
@@ -208,7 +210,7 @@ if __name__ == '__main__':
     ap.add_argument("-p", "--port", default=8000, help="Scoreboard port number")
     args = ap.parse_args(argv[1:])
     
-    pt = ProbeThread(args.register_file)
+    pt = ProbeThread(args.register_file, args.warlog)
     pt.start()
     bottle.run(host='', port=int(args.port))
 
